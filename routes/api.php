@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
  
-Route::get('articles', 'ArticleController@index');
-Route::get('articles/{article}', 'ArticleController@show');
-Route::post('articles', 'ArticleController@store');
-Route::put('articles/{article}', 'ArticleController@update');
-Route::delete('articles/{article}', 'ArticleController@delete');
+
+Route::resources([
+  'articles' => ArticleController::class
+]);
+// Route::get('articles', 'ArticleController@index');
+// Route::get('articles/{article}', 'ArticleController@show');
+// Route::post('articles', 'ArticleController@store');
+// Route::put('articles/{article}', 'ArticleController@update');
+// Route::delete('articles/{article}', 'ArticleController@delete');
 
 Route::group(["namespace"=>"Auth"], function() {
   Route::post('register', 'UserController@register');
